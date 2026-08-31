@@ -1,0 +1,18 @@
+:root {
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* Lily-pad notch: one corner squared off with a small leaf-vein notch cut in.
+     Applied via clip-path on .lily-card (see components/cards). */
+
+  --shadow-sm: 0 1px 2px rgba(31, 61, 43, 0.08);
+  --shadow-md: 0 4px 12px rgba(31, 61, 43, 0.12);
+  --shadow-lg: 0 12px 28px rgba(31, 61, 43, 0.16);
+
+  --ease-standard: cubic-bezier(0.25, 0.8, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+}

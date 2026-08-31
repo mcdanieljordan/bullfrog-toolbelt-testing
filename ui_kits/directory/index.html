@@ -1,0 +1,20 @@
+<!-- @dsCard group="Directory Website" viewport="1160x800" name="Homepage" -->
+<!-- @startingPoint section="Screens" subtitle="Teacher-tools directory homepage" viewport="1160x800" -->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+const { DirectoryHome } = window.BullFrogToolbelt;
+ReactDOM.createRoot(document.getElementById('root')).render(<DirectoryHome />);
+</script>
+</body>
+</html>

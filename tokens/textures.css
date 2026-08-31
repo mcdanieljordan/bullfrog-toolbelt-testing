@@ -1,0 +1,20 @@
+/* Subtle pond-ripple background accent — concentric rings, very low contrast.
+   Use sparingly: section backgrounds, empty states, hero corners. Never under body text. */
+.ripple-bg {
+  background-image: repeating-radial-gradient(
+    circle at var(--ripple-x, 85%) var(--ripple-y, 15%),
+    rgba(31, 61, 43, 0.05) 0px,
+    rgba(31, 61, 43, 0.05) 1px,
+    transparent 2px,
+    transparent 26px
+  );
+}
+.ripple-bg-dark {
+  background-image: repeating-radial-gradient(
+    circle at var(--ripple-x, 85%) var(--ripple-y, 15%),
+    rgba(241, 246, 239, 0.06) 0px,
+    rgba(241, 246, 239, 0.06) 1px,
+    transparent 2px,
+    transparent 26px
+  );
+}

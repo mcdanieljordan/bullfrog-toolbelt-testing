@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<template id="__bundler_thumbnail" data-bg-color="#1F3D2B">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="34" fill="#5E9C4A"/>
+    <circle cx="82" cy="40" r="7" fill="#F4B93E"/>
+  </svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-75138786-b28c-48f8-95c2-f16d56f5b181/styles.css">
+  <script src="_ds/organic-75138786-b28c-48f8-95c2-f16d56f5b181/_ds_bundle.js"></script>
+  <style>
+    :root {
+      --color-bg: #F1F6EF;
+      --color-surface: #E7EEE2;
+      --color-text: #20291F;
+      --color-divider: color-mix(in srgb, #20291F 16%, transparent);
+      --color-accent: #5E9C4A;
+      --color-accent-100: #EAF3E5; --color-accent-200: #CFE6C4; --color-accent-300: #A9D298;
+      --color-accent-400: #83BD6C; --color-accent-500: #5E9C4A; --color-accent-600: #4C8138;
+      --color-accent-700: #3B662C; --color-accent-800: #2C4D21; --color-accent-900: #1E3517;
+      --color-accent-2: #8A6339;
+      --color-accent-2-100: #EFE6DA; --color-accent-2-200: #D9C2A2; --color-accent-2-300: #BE9E71;
+      --color-accent-2-400: #A47F50; --color-accent-2-500: #8A6339; --color-accent-2-600: #714F2C;
+      --color-accent-2-700: #593D22; --color-accent-2-800: #422C18; --color-accent-2-900: #2C1D10;
+      --bft-pond: #1F3D2B;
+      --bft-yellow: #F4B93E;
+    }
+    body { margin: 0; background: var(--color-bg); }
+    a { color: var(--color-accent); }
+    a:hover { color: var(--color-accent-600); }
+    .tag-accent { background: var(--bft-yellow) !important; color: #20291F !important; }
+    :focus-visible { outline: 2px solid var(--bft-yellow) !important; outline-offset: 2px; }
+    .bft-card:focus-visible, .bft-chip:focus-visible, .bft-icon-btn:focus-visible { outline: 2px solid var(--bft-yellow); outline-offset: 2px; }
+    details.bft-tip > summary { cursor: pointer; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</helmet>
+<div data-screen-label="Homepage" style="{{ rootStyle }}">
+
+  <nav class="nav" style="background:var(--bft-pond);border-radius:0;">
+    <span class="nav-brand" style="display:flex;align-items:center;gap:10px;color:var(--color-bg);">
+      <img src="assets/logo/lilypad-mark.png" alt="" style="width:{{ logoSize }};height:{{ logoSize }};border-radius:10px;flex-shrink:0;">
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-size:{{ navBrandSize }};color:var(--color-bg);">BullFrog Toolbelt</span>
+        <span style="font-family:var(--font-body);font-weight:500;font-size:{{ navSloganSize }};color:var(--bft-yellow);letter-spacing:0.01em;">One Link to Rule Them All</span>
+      </span>
+    </span>
+    <button type="button" class="btn {{ hcBtnClass }}" aria-pressed="{{ highContrast }}" onClick="{{ toggleHC }}" style="{{ hcBtnStyle }};font-size:{{ smallCtrlSize }};">High contrast</button>
+    <button type="button" class="btn {{ ltBtnClass }}" aria-pressed="{{ largeText }}" onClick="{{ toggleLT }}" style="{{ ltBtnStyle }};font-size:{{ smallCtrlSize }};">Larger text</button>
+    <a href="#donate" class="btn btn-ghost" style="color:#F1F6EF;border-color:color-mix(in srgb, #F1F6EF 45%, transparent);font-size:{{ smallCtrlSize }};">Donate</a>
+  </nav>
+
+  <main style="max-width:1160px;margin:0 auto;padding:var(--space-6) var(--space-6) var(--space-8);">
+
+    <div style="max-width:560px;margin:0 auto var(--space-6);">
+      <div class="field">
+        <label for="bft-search" style="font-size:{{ bodySize }};">Search tools, music &amp; books</label>
+        <input id="bft-search" class="input" type="search" placeholder="Try &quot;soundboard&quot; or a title..." value="{{ search }}" onChange="{{ onSearchChange }}" style="font-size:{{ bodySize }};" aria-describedby="bft-search-help">
+      </div>
+      <p id="bft-search-help" class="text-muted" style="margin:6px 0 0;font-size:{{ smallSize }};">Matches close spellings too — no need to type it perfectly.</p>
+    </div>
+
+    <div class="seg" role="radiogroup" aria-label="Category" style="margin-bottom:var(--space-4);">
+      <sc-for list="{{ categoryOptions }}" as="opt" hint-placeholder-count="4">
+        <label class="seg-opt" style="font-size:{{ smallCtrlSize }};">
+          <input type="radio" name="bft-category" checked="{{ opt.checked }}" onChange="{{ opt.onChange }}">
+          {{ opt.label }}
+        </label>
+      </sc-for>
+    </div>
+
+    <div role="group" aria-label="Grade level" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:var(--space-6);">
+      <sc-for list="{{ gradeChips }}" as="chip" hint-placeholder-count="4">
+        <button type="button" class="bft-chip" aria-pressed="{{ chip.selected }}" onClick="{{ chip.onToggle }}" style="border:none;padding:0;background:none;cursor:pointer;">
+          <span class="tag {{ chip.tagClass }}" style="font-size:{{ smallCtrlSize }};">{{ chip.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasRecent }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:var(--space-6);">
+        <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.6;margin-bottom:8px;">Recently used</div>
+        <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;">
+          <sc-for list="{{ recentItems }}" as="r" hint-placeholder-count="3">
+            <button type="button" class="btn btn-secondary" onClick="{{ r.onOpen }}" style="flex-shrink:0;font-size:{{ smallCtrlSize }};gap:8px;">
+              <span aria-hidden="true">{{ r.icon }}</span>{{ r.name }}
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);flex-wrap:wrap;gap:12px;">
+      <h1 style="font-family:var(--font-heading);margin:0;font-size:{{ h1Size }};">Browse the toolbelt</h1>
+      <button type="button" class="btn btn-primary" onClick="{{ surpriseMe }}" style="font-size:{{ smallCtrlSize }};">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1"/><circle cx="15.5" cy="15.5" r="1"/><circle cx="15.5" cy="8.5" r="1"/><circle cx="8.5" cy="15.5" r="1"/></svg>
+        Surprise me
+      </button>
+    </div>
+
+    <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="background:var(--color-accent-2-100);color:var(--color-accent-2-800);border-radius:var(--radius-md);padding:10px 16px;margin-bottom:var(--space-6);font-size:{{ smallSize }};">{{ toast }}</div>
+    </sc-if>
+
+    <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+      <div ref="{{ gridRef }}" onKeyDown="{{ handleGridKeyDown }}" role="grid" aria-label="Resource results" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:var(--space-6);">
+        <sc-for list="{{ filteredResources }}" as="item" hint-placeholder-count="5">
+          <div
+            class="bft-card card elev-sm"
+            ref="{{ item.ref }}"
+            tabIndex="0"
+            role="article"
+            aria-label="{{ item.name }}"
+            data-card-id="{{ item.id }}"
+            onKeyDown="{{ item.onCardKeyDown }}"
+            style="{{ item.cardStyle }}"
+          >
+            <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;">
+              <div style="width:40px;height:40px;border-radius:12px;background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;" aria-hidden="true">{{ item.icon }}</div>
+              <div style="flex:1;min-width:0;">
+                <div class="card-title" style="font-size:{{ cardTitleSize }};">{{ item.nameNode }}</div>
+              </div>
+              <sc-if value="{{ item.badge }}" hint-placeholder-val="{{ false }}">
+                <span class="tag {{ item.badgeClass }}" style="font-size:11px;flex-shrink:0;">{{ item.badgeLabel }}</span>
+              </sc-if>
+            </div>
+            <p class="card-body" style="font-size:{{ bodySize }};">{{ item.description }}</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;">
+              <span class="tag tag-outline" style="font-size:11px;">{{ item.gradesLabel }}</span>
+              <sc-if value="{{ item.offline }}" hint-placeholder-val="{{ false }}">
+                <span class="tag tag-accent-2" style="font-size:11px;display:inline-flex;align-items:center;gap:4px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m2 2 20 20"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M5 12.9a10 10 0 0 1 5.17-2.69"/><path d="M19 12.9a10 10 0 0 0-2.5-1.9"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c.9-.2 1.8-.3 2.34-.3q1.36 0 2.66.2"/><path d="M22 8.82a15 15 0 0 0-4.5-2.86"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+                  Offline-friendly
+                </span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ item.tip }}" hint-placeholder-val="{{ false }}">
+              <details class="bft-tip" style="margin:8px 0;font-size:{{ smallSize }};">
+                <summary style="font-weight:600;color:var(--color-accent-700);">Teacher tip</summary>
+                <p class="text-muted" style="margin:6px 0 0;">{{ item.tip }}</p>
+              </details>
+            </sc-if>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
+              <button type="button" class="btn btn-primary" disabled="{{ item.disabled }}" onClick="{{ item.onOpen }}" style="font-size:{{ smallCtrlSize }};flex:1;">
+                {{ item.openLabel }}
+              </button>
+              <button type="button" class="btn btn-secondary btn-icon" disabled="{{ item.disabled }}" onClick="{{ item.onFullscreen }}" aria-label="Kiosk / fullscreen mode" title="Kiosk mode (fullscreen)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </button>
+              <button type="button" class="btn btn-ghost btn-icon" disabled="{{ item.disabled }}" onClick="{{ item.onQr }}" aria-label="Printable QR code for classroom wall" title="Printable QR code">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M14 21v-3.5"/><path d="M21 21h-3.5"/><path d="M21 14v.01"/></svg>
+              </button>
+            </div>
+            <sc-if value="{{ item.qrIsOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:10px;padding:12px;background:var(--color-neutral-100);border-radius:var(--radius-md);display:flex;gap:12px;align-items:center;">
+                <div style="display:grid;grid-template-columns:repeat(6, 6px);grid-template-rows:repeat(6, 6px);gap:1px;background:var(--color-neutral-0);padding:6px;border-radius:6px;flex-shrink:0;">
+                  <sc-for list="{{ item.qrCells }}" as="cell" hint-placeholder-count="36">
+                    <div style="{{ cell.style }}"></div>
+                  </sc-for>
+                </div>
+                <div class="text-muted" style="font-size:11px;">Placeholder QR &mdash; post this near the classroom projector once real links are live.</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <p class="text-muted" style="text-align:center;padding:var(--space-8) 0;font-size:{{ bodySize }};">No tools match yet &mdash; try a shorter search, or clear the grade filters.</p>
+    </sc-if>
+
+  </main>
+
+  <footer id="donate" style="padding:var(--space-8) var(--space-6) var(--space-8);">
+    <div style="max-width:640px;margin:0 auto;background:var(--color-accent-2-100);border-radius:calc(var(--radius-lg) * 1.4);padding:var(--space-8) var(--space-6);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-4);">
+      <h2 style="font-family:var(--font-heading);margin:0;font-size:{{ h2Size }};color:var(--color-accent-2-800);">Every Buck Builds</h2>
+      <p style="margin:0;max-width:44ch;color:var(--color-text);font-size:{{ bodySize }};">BullFrog Toolbelt is built and kept free by one developer. Small donations go straight into building the next free tool &mdash; nothing here is ever paywalled for teachers.</p>
+      <a href="https://buymeacoffee.com/tools4teachers" target="_blank" rel="noopener" aria-label="Donate via Buy Me a Coffee \u2014 scan or click the QR code" style="display:block;">
+        <img src="assets/donate-qr.png" alt="QR code linking to buymeacoffee.com/tools4teachers" style="width:200px;height:200px;border-radius:var(--radius-md);box-shadow:var(--shadow-md);">
+      </a>
+      <a href="https://buymeacoffee.com/tools4teachers" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:{{ bodySize }};">Chip in $5</a>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRecentlyUsed&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot;}, &quot;defaultHighContrast&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot;}}">
+const RESOURCES = [
+  { id: 'ribbit-rabbit', name: 'Ribbit Rabbit', category: 'Apps', grades: ['k2', '35'], description: 'A classroom soundboard for transitions and signals — one tap, one consistent cue.', icon: '\u{1F514}', badge: 'new', offline: true, tip: 'Use it to signal clean-up time with a consistent sound.', disabled: false },
+  { id: 'simon-says', name: 'Simon Says', category: 'Apps', grades: ['35', '68'], description: 'A fast-paced memory and listening game for quick brain breaks.', icon: '\u{1F9E0}', badge: null, offline: false, tip: null, disabled: true },
+  { id: 'memory-match', name: 'Memory Match', category: 'Apps', grades: ['k2'], description: 'A calm matching game built for early learners.', icon: '\u{1F9E9}', badge: null, offline: false, tip: null, disabled: true },
+  { id: 'focus-playlist', name: 'Focus Playlist', category: 'Music', grades: ['k2', '35', '68', '912'], description: 'Instrumental background tracks for independent work time.', icon: '\u{1F3B5}', badge: null, offline: false, tip: null, disabled: true },
+  { id: 'reading-log-guide', name: 'Reading Log Guide', category: 'Books', grades: ['35', '68', '912'], description: 'A printable companion guide for tracking independent reading.', icon: '\u{1F4D6}', badge: null, offline: false, tip: null, disabled: true },
+];
+const GRADE_LABELS = { k2: 'K-2', '35': '3-5', '68': '6-8', '912': '9-12' };
+const CATEGORIES = ['All', 'Apps', 'Music', 'Books'];
+
+function levenshtein(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+function matchName(name, query) {
+  if (!query) return { matched: true, range: null };
+  const n = name.toLowerCase();
+  const q = query.toLowerCase().trim();
+  if (!q) return { matched: true, range: null };
+  const idx = n.indexOf(q);
+  if (idx !== -1) return { matched: true, range: [idx, idx + q.length] };
+  for (let i = 0; i < q.length; i++) {
+    const qq = q.slice(0, i) + q.slice(i + 1);
+    if (qq.length >= 2) {
+      const idx2 = n.indexOf(qq);
+      if (idx2 !== -1) return { matched: true, range: [idx2, idx2 + qq.length] };
+    }
+  }
+  const maxDist = q.length <= 5 ? 1 : 2;
+  for (let len = Math.max(1, q.length - 1); len <= q.length + 1; len++) {
+    for (let start = 0; start <= n.length - len; start++) {
+      if (levenshtein(n.substr(start, len), q) <= maxDist) return { matched: true, range: [start, start + len] };
+    }
+  }
+  return { matched: false, range: null };
+}
+
+function qrCells(seed) {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  const cells = [];
+  for (let i = 0; i < 36; i++) {
+    h = (h * 1103515245 + 12345) >>> 0;
+    const on = (h >> 3) % 3 !== 0;
+    cells.push({ style: `width:6px;height:6px;background:${on ? 'var(--color-neutral-900)' : 'transparent'};` });
+  }
+  return cells;
+}
+
+class Component extends DCLogic {
+  state = { search: '', category: 'All', grades: [], highContrast: this.props.defaultHighContrast ?? false, largeText: false, recent: [], qrOpenId: null, toast: '', reducedMotion: false };
+
+  componentDidMount() {
+    try { const s = localStorage.getItem('bft_search_v1'); if (s) this.setState({ search: s }); } catch (e) {}
+    try { const r = localStorage.getItem('bft_recent_v1'); if (r) this.setState({ recent: JSON.parse(r) }); } catch (e) {}
+    try { if (localStorage.getItem('bft_hc_v1') === '1') this.setState({ highContrast: true }); } catch (e) {}
+    try { if (localStorage.getItem('bft_lt_v1') === '1') this.setState({ largeText: true }); } catch (e) {}
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    this.setState({ reducedMotion: mq.matches });
+    this._mq = mq;
+    this._mqHandler = (e) => this.setState({ reducedMotion: e.matches });
+    if (mq.addEventListener) mq.addEventListener('change', this._mqHandler); else mq.addListener(this._mqHandler);
+  }
+
+  componentWillUnmount() {
+    if (this._mq) { if (this._mq.removeEventListener) this._mq.removeEventListener('change', this._mqHandler); else this._mq.removeListener(this._mqHandler); }
+    clearTimeout(this._toastTimer);
+  }
+
+  setSearch = (v) => { this.setState({ search: v }); try { localStorage.setItem('bft_search_v1', v); } catch (e) {} };
+  setCategory = (c) => this.setState({ category: c });
+  toggleGrade = (g) => this.setState((s) => ({ grades: s.grades.includes(g) ? s.grades.filter((x) => x !== g) : [...s.grades, g] }));
+  toggleHC = () => this.setState((s) => { const v = !s.highContrast; try { localStorage.setItem('bft_hc_v1', v ? '1' : '0'); } catch (e) {} return { highContrast: v }; });
+  toggleLT = () => this.setState((s) => { const v = !s.largeText; try { localStorage.setItem('bft_lt_v1', v ? '1' : '0'); } catch (e) {} return { largeText: v }; });
+
+  openApp = (item) => {
+    if (item.disabled) return;
+    clearTimeout(this._toastTimer);
+    this.setState((s) => {
+      const recent = [item.id, ...s.recent.filter((id) => id !== item.id)].slice(0, 4);
+      try { localStorage.setItem('bft_recent_v1', JSON.stringify(recent)); } catch (e) {}
+      return { recent, toast: `Opening ${item.name}\u2026 (demo)` };
+    });
+    this._toastTimer = setTimeout(() => this.setState({ toast: '' }), 2500);
+  };
+
+  toggleFullscreen = (item) => {
+    const el = this.itemRefs[item.id] && this.itemRefs[item.id].current;
+    if (!el) return;
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (el.requestFullscreen) el.requestFullscreen();
+  };
+
+  toggleQr = (id) => this.setState((s) => ({ qrOpenId: s.qrOpenId === id ? null : id }));
+
+  surpriseMe = () => {
+    const enabled = RESOURCES.filter((r) => !r.disabled);
+    if (!enabled.length) return;
+    const pick = enabled[Math.floor(Math.random() * enabled.length)];
+    this.setState({ search: '', category: 'All', grades: [] }, () => {
+      setTimeout(() => {
+        const el = this.itemRefs[pick.id] && this.itemRefs[pick.id].current;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + rect.top - 100, behavior: this.state.reducedMotion ? 'auto' : 'smooth' });
+          el.focus();
+        }
+      }, 60);
+    });
+  };
+
+  handleGridKeyDown = (e) => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    const target = e.target.closest ? e.target.closest('[data-card-id]') : null;
+    if (!target) return;
+    e.preventDefault();
+    const order = this.lastOrder || [];
+    let idx = order.indexOf(target.getAttribute('data-card-id'));
+    if (idx === -1) idx = 0;
+    let cols = 1;
+    if (this.gridRef && this.gridRef.current) {
+      cols = getComputedStyle(this.gridRef.current).gridTemplateColumns.split(' ').filter(Boolean).length || 1;
+    }
+    if (e.key === 'ArrowRight') idx = Math.min(order.length - 1, idx + 1);
+    if (e.key === 'ArrowLeft') idx = Math.max(0, idx - 1);
+    if (e.key === 'ArrowDown') idx = Math.min(order.length - 1, idx + cols);
+    if (e.key === 'ArrowUp') idx = Math.max(0, idx - cols);
+    const nextId = order[idx];
+    const nextEl = this.itemRefs[nextId] && this.itemRefs[nextId].current;
+    if (nextEl) nextEl.focus();
+  };
+
+  renderVals() {
+    const s = this.state;
+    this.gridRef = this.gridRef || React.createRef();
+    this.itemRefs = this.itemRefs || {};
+    RESOURCES.forEach((r) => { if (!this.itemRefs[r.id]) this.itemRefs[r.id] = React.createRef(); });
+
+    const scale = s.largeText ? 1.18 : 1;
+    const px = (n) => `${Math.round(n * scale)}px`;
+    const trans = s.reducedMotion ? 'none' : 'transform 160ms ease, box-shadow 160ms ease';
+
+    const rootStyle = {
+      background: s.highContrast ? '#ffffff' : 'var(--color-bg)',
+      color: s.highContrast ? '#000000' : 'var(--color-text)',
+      minHeight: '100%',
+    };
+
+    const categoryOptions = CATEGORIES.map((c) => ({ label: c, checked: s.category === c, onChange: () => this.setCategory(c) }));
+    const gradeChips = Object.keys(GRADE_LABELS).map((g) => ({
+      label: GRADE_LABELS[g],
+      selected: s.grades.includes(g),
+      tagClass: s.grades.includes(g) ? 'tag-accent' : 'tag-outline',
+      onToggle: () => this.toggleGrade(g),
+    }));
+
+    const filtered = RESOURCES.filter((r) => {
+      if (s.category !== 'All' && r.category !== s.category) return false;
+      if (s.grades.length && !r.grades.some((g) => s.grades.includes(g))) return false;
+      const m = matchName(r.name, s.search);
+      return m.matched;
+    });
+
+    const filteredResources = filtered.map((r) => {
+      const m = matchName(r.name, s.search);
+      let nameNode = r.name;
+      if (m.range) {
+        const [st, en] = m.range;
+        nameNode = React.createElement(React.Fragment, null, r.name.slice(0, st), React.createElement('mark', { style: { background: 'var(--color-accent-200)', color: 'var(--color-accent-800)', borderRadius: '3px', padding: '0 2px' } }, r.name.slice(st, en)), r.name.slice(en));
+      }
+      return {
+        ...r,
+        nameNode,
+        gradesLabel: r.grades.map((g) => GRADE_LABELS[g]).join(', '),
+        badgeClass: r.badge === 'new' ? 'tag-accent' : 'tag-neutral',
+        badgeLabel: r.disabled ? 'Coming soon' : r.badge === 'new' ? 'New' : '',
+        badge: r.disabled ? 'coming-soon' : r.badge,
+        openLabel: r.disabled ? 'Coming soon' : 'Open App',
+        ref: this.itemRefs[r.id],
+        cardStyle: { transition: trans, opacity: r.disabled ? 0.6 : 1, borderColor: s.highContrast ? '#000' : 'var(--color-divider)', borderWidth: s.highContrast ? '2px' : undefined, fontSize: px(16) },
+        onOpen: () => this.openApp(r),
+        onFullscreen: () => this.toggleFullscreen(r),
+        onQr: () => this.toggleQr(r.id),
+        qrIsOpen: s.qrOpenId === r.id,
+        qrCells: qrCells(r.id),
+      };
+    });
+
+    this.lastOrder = filteredResources.map((r) => r.id);
+
+    const showRecent = this.props.showRecentlyUsed ?? true;
+    const recentItems = showRecent ? s.recent.map((id) => RESOURCES.find((r) => r.id === id)).filter(Boolean).map((r) => ({ ...r, onOpen: () => this.openApp(r) })) : [];
+
+    return {
+      rootStyle,
+      logoSize: px(36),
+      navBrandSize: px(19),
+      navSloganSize: px(12),
+      smallCtrlSize: px(13),
+      smallSize: px(13),
+      bodySize: px(15),
+      cardTitleSize: px(17),
+      h1Size: px(30),
+      h2Size: px(26),
+      hcBtnClass: s.highContrast ? 'btn-primary' : 'btn-ghost',
+      ltBtnClass: s.largeText ? 'btn-primary' : 'btn-ghost',
+      hcBtnStyle: s.highContrast ? '' : 'color:#F1F6EF;border-color:color-mix(in srgb, #F1F6EF 45%, transparent)',
+      ltBtnStyle: s.largeText ? '' : 'color:#F1F6EF;border-color:color-mix(in srgb, #F1F6EF 45%, transparent)',
+      highContrast: s.highContrast,
+      largeText: s.largeText,
+      toggleHC: this.toggleHC,
+      toggleLT: this.toggleLT,
+      search: s.search,
+      onSearchChange: (e) => this.setSearch(e.target.value),
+      categoryOptions,
+      gradeChips,
+      hasRecent: recentItems.length > 0,
+      recentItems,
+      surpriseMe: this.surpriseMe,
+      hasToast: !!s.toast,
+      toast: s.toast,
+      gridRef: this.gridRef,
+      handleGridKeyDown: this.handleGridKeyDown,
+      hasResults: filteredResources.length > 0,
+      noResults: filteredResources.length === 0,
+      filteredResources,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

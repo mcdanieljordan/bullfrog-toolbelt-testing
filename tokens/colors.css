@@ -1,0 +1,93 @@
+:root {
+  /* Brand base colors */
+  --pond-deep: #1F3D2B;
+  --lily-green: #5E9C4A;
+  --sun-yellow: #F4B93E;
+  --mud-brown: #8A6339;
+  --mist: #F1F6EF;
+  --ink: #20291F;
+
+  /* Lily green ramp (primary) */
+  --color-primary-100: #EAF3E5;
+  --color-primary-200: #CFE6C4;
+  --color-primary-300: #A9D298;
+  --color-primary-400: #83BD6C;
+  --color-primary-500: #5E9C4A; /* base */
+  --color-primary-600: #4C8138;
+  --color-primary-700: #3B662C;
+  --color-primary-800: #2C4D21;
+  --color-primary-900: #1E3517;
+
+  /* Pond deep green ramp (dark accents, header) */
+  --color-pond-100: #E3E9E5;
+  --color-pond-200: #B9C7BE;
+  --color-pond-300: #7F9587;
+  --color-pond-400: #476353;
+  --color-pond-500: #1F3D2B; /* base */
+  --color-pond-600: #1A3324;
+  --color-pond-700: #14281C;
+  --color-pond-800: #0F1E15;
+  --color-pond-900: #0A140E;
+
+  /* Sun yellow ramp (highlights, badges, focus) */
+  --color-accent-100: #FDF1D8;
+  --color-accent-200: #FAE0AC;
+  --color-accent-300: #F7CE80;
+  --color-accent-400: #F5C15D;
+  --color-accent-500: #F4B93E; /* base */
+  --color-accent-600: #D69A25;
+  --color-accent-700: #A9791D;
+  --color-accent-800: #7C5814;
+  --color-accent-900: #50390C;
+
+  /* Mud brown ramp (secondary accent) */
+  --color-secondary-100: #EFE6DA;
+  --color-secondary-200: #D9C2A2;
+  --color-secondary-300: #BE9E71;
+  --color-secondary-400: #A47F50;
+  --color-secondary-500: #8A6339; /* base */
+  --color-secondary-600: #714F2C;
+  --color-secondary-700: #593D22;
+  --color-secondary-800: #422C18;
+  --color-secondary-900: #2C1D10;
+
+  /* Neutrals off the mist/ink pair */
+  --color-neutral-0: #FFFFFF;
+  --color-neutral-50: #F8FBF6;
+  --color-neutral-100: #F1F6EF; /* mist */
+  --color-neutral-200: #E1E9DD;
+  --color-neutral-300: #C7D3C1;
+  --color-neutral-400: #9AAB92;
+  --color-neutral-500: #6E7F66;
+  --color-neutral-700: #3A4535;
+  --color-neutral-900: #20291F; /* ink */
+
+  /* Semantic aliases */
+  --color-bg: var(--color-neutral-100);
+  --color-bg-raised: var(--color-neutral-0);
+  --color-text: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-500);
+  --color-text-on-dark: var(--color-neutral-50);
+  --color-border: var(--color-neutral-300);
+
+  --color-header-bg: var(--color-pond-500);
+  --color-header-text: var(--color-neutral-50);
+
+  --color-btn-primary-bg: var(--color-primary-500);
+  --color-btn-primary-bg-hover: var(--color-primary-600);
+  --color-btn-primary-bg-active: var(--color-primary-700);
+  --color-btn-primary-text: var(--color-neutral-0);
+
+  --color-btn-secondary-bg: var(--color-secondary-100);
+  --color-btn-secondary-bg-hover: var(--color-secondary-200);
+  --color-btn-secondary-text: var(--color-secondary-800);
+
+  --color-focus-ring: var(--color-accent-500);
+  --color-badge-bg: var(--color-accent-200);
+  --color-badge-text: var(--color-accent-800);
+
+  --color-success: var(--color-primary-600);
+  --color-warning: var(--color-accent-600);
+  --color-link: var(--color-primary-700);
+  --color-link-hover: var(--color-primary-800);
+}
